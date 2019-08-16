@@ -28,6 +28,7 @@ Route::group([
     {
         Route::resource('employee', 'EmployeeController');
         Route::resource('kitchen_staff', 'KitchenStaffController');
+        Route::resource('food', 'FoodController');
     }
 );
 

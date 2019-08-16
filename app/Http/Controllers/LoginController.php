@@ -24,30 +24,10 @@ class LoginController extends Controller
         $request->validate(['email'=>'required|email','password'=>'required']);
         $email=$request->email;
         $password=$request->password;
-        $user =User::where('email',$email)->first();
-        if($user)
-        {
-            if(Auth::attempt(['email'=> $email, 'password' => $password]))
-            {
-
-//                return 'okk';
-                return redirect(route('dashboard'));
-                // return view('backend.dashboard.index');
-            }
-
-
-            else{
-                Session::flash('password','Email and password donot match');
-                return back();
-
-            }
-
-        }
-        else
-        {
-
-            session::flash('email','Email not found');
-            return back();
+        if (Auth::attempt(['email'=>$email,'password'=>$password])){
+            return redirect('dashboard');
+        }else{
+            print_r('not ok');
         }
     }
 

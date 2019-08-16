@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\KitchenStaff;
+use App\User;
 use Illuminate\Http\Request;
 
 class KitchenStaffController extends Controller
@@ -35,7 +36,25 @@ class KitchenStaffController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required',
+            'confirmed_password' => 'required|same:password',
+            'phone_number' => 'required|numeric|digits:10',
+            'address'=>'required'
+        ]);
+
+        $input = $request->all();
+        $input['is_kitchen_staff']=1;
+        $input['password']=bcrypt($request->password);
+        $user = User::create($input);
+        if ($user) {
+            return view('backend.pages.kitchen-staff.index');
+        } else {
+            return back();
+        }
+
     }
 
     /**

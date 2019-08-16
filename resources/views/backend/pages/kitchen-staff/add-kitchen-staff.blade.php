@@ -14,7 +14,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green">
                         <i class="icon-plus font-green"></i>
-                        <span class="caption-subject bold uppercase"> SignUp as Employee</span>
+                        <span class="caption-subject bold uppercase"> Add Kitchen Staff</span>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label> Employee Name</label>
+                    <label>Name</label>
                     <input type="text" placeholder="Full Name of Company..."   onkeyup="clearerror('nameError')" name="name" value="{{ old('name')}}" class="form-control">
                     @if ($errors->has('name'))
                         <span class="help-block" id="nameError">
@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label> Employee Email</label>
+                    <label> Email</label>
                     <input type="email" placeholder="Company Email...."  onkeyup="clearerror('emailError')" name="email" value="{{ old('email')}}" class="form-control">
                     @if ($errors->has('email'))
                         <span class="help-block" id="emailError">
@@ -48,10 +48,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label> Address</label>
-                    <input type="text" placeholder="City..."  onkeyup="clearerror('cityError')" name="city" value="{{ old('city')}}" class="form-control">
-                    @if ($errors->has('city'))
+                    <input type="text" placKiteholder="City..."  onkeyup="clearerror('cityError')" name="address" value="{{ old('address')}}" class="form-control">
+                    @if ($errors->has('address'))
                         <span class="help-block" id="cityError">
-                                <strong class="text-danger">{{ $errors->first('city') }}</strong>
+                                <strong class="text-danger">{{ $errors->first('address') }}</strong>
                             </span>
                     @endif
                 </div>
@@ -60,10 +60,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label> Phone Number</label>
-                    <input type="text" placeholder="Company Phone Number..."  onkeyup="clearerror('contactError')" name="contact" value="{{ old('contact')}}" class="form-control">
-                    @if ($errors->has('contact'))
+                    <input type="text" placeholder="Company Phone Number..."  onkeyup="clearerror('contactError')" name="phone_number" value="{{ old('phone_number')}}" class="form-control">
+                    @if ($errors->has('phone_number'))
                         <span class="help-block" id="contactError">
-                                                <strong class="text-danger">{{ $errors->first('contact') }}</strong>
+                                                <strong class="text-danger">{{ $errors->first('phone_number') }}</strong>
                                             </span>
                     @endif
                 </div>

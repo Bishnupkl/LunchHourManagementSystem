@@ -15,8 +15,10 @@ class AdminTableSeeder extends Seeder
             'name'=>'KlientEscape',
             'email'=>'connect@klientescape.com',
             'password'=>bcrypt('secret'),
-            'role_id'=>'1',
-            'email_verified_at'=>\Carbon\Carbon::now()
+            'phone_number'=>'9811990067',
+            'address'=>'kathmandu',
+            'is_admin'=>1,
+            'is_verified'=>1,
         ]);
     }
 }

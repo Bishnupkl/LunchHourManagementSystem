@@ -14,7 +14,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.pages.food.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.food.create');
     }
 
     /**
