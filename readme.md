@@ -1,3 +1,48 @@
+# Lunch Hour Management System
+
+This project is based on managing Lunch Hour system of any company.
+
+### Installation:
+
+`git clone` this repository and `cd` inside the project root, then enter the following commands
+
+1. `composer install --prefer-dist --div -vvv` (might take a while to complete)
+
+2. `cp .env.example .env`
+
+3. `php artisan key:generate`
+
+    Now open `.env` file and make necessary changes to the **DB_** section.
+    
+    **Yes, of course, you'll have to setup a database and it's user already before the next step!**
+    Otherwise, exactly what settings were you going to put in the _DB\__ section of the `.env` file? :P
+
+4. `php artisan migrate`
+
+5. `php artisan db:seed`
+
+6. `php artisan serve`
+
+    Open the browser and go to `http://localhost:8000`
+
+7. `php artisan route:clear`
+
+    You may use the route:clear command to clear the route cache
+
+8. `php artisan route:cache`
+
+    Using the route cache will drastically decrease the amount of time it takes to register all of your application's routes. 
+
+### Login Information
+
+Email : connect@klientescape.com
+
+Password : `secret`
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
