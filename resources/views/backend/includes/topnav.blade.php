@@ -4,9 +4,8 @@
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="/">
-                LHMS
-{{--                <img src="{{asset('images/download.png')}}" alt="logo" class="logo-default" style="width: 150px;">--}}
+            <a href="http://klientscape.com">
+                <img src="{{asset('images/logo.png')}}" alt="logo" class="logo-default" style="width: 150px; margin-top: -10px">
             </a>
         </div>
         <!-- END LOGO -->

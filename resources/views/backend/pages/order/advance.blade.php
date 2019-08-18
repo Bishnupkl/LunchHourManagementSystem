@@ -23,7 +23,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Food name</label>
-                    <select name="food_id" multiple>
+                    <select name="food_id" class="form-control">
                         @foreach($total_food as $food)
                         <option value="{{$food->id}}">{{$food->name}}</option>
                             @endforeach

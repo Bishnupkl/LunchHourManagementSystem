@@ -52,11 +52,15 @@ class OrderController extends Controller
 
     public function storeAdvanceOrder(Request $request)
     {
-        $foodName = Food::find($request->food_id)->first()->name;
+//        dd($request->all());
+        $foodName = Food::find($request->food_id)->name;
+
+//        dd($foodName);
 
         $userId = $request->user()->id;
         $order = Order::where(['food_name' => $foodName, 'user_id' => $userId])->first();
         if (!$order) {
+
                 $order_food=Order::create(['food_name' => $foodName, 'user_id' => $userId,'is_advance'=>true]);
                 if ($order_food){
                     return back()->with('message', 'Order Succesfull');

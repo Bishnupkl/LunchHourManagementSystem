@@ -3,8 +3,8 @@
 
 @section('main-content')
     <div class="logo">
-        <a href="#">
-            <img src="{{asset('images/logo-white-small.png')}}" alt="logo">
+        <a href="http://klientscape.com">
+            <img src="{{asset('images/logo.png')}}" alt="logo" width="300">
         </a>
     </div>
     <div class="content">
@@ -62,7 +62,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <a data-toggle="modal" data-target="#passwordResetModal">Forgot Password?</a>
+{{--                <a data-toggle="modal" data-target="#passwordResetModal">Forgot Password?</a>--}}
             </div>
             <div class="form-actions">
                 <button type="submit" class="btn green uppercase">Login</button>
@@ -77,40 +77,22 @@
         </form>
         <!-- END LOGIN FORM -->
         <!-- BEGIN FORGOT PASSWORD FORM -->
-        <form class="forget-form" action="index.html" method="post">
-            <h3 class="font-green">Forget Password ?</h3>
-            <p> Enter your e-mail address below to reset your password. </p>
-            <div class="form-group">
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
-            <div class="form-actions">
-                <button type="button" id="back-btn" class="btn btn-default">Back</button>
-                <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
-            </div>
-        </form>
+{{--        <form class="forget-form" action="index.html" method="post">--}}
+{{--            <h3 class="font-green">Forget Password ?</h3>--}}
+{{--            <p> Enter your e-mail address below to reset your password. </p>--}}
+{{--            <div class="form-group">--}}
+{{--                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>--}}
+{{--            <div class="form-actions">--}}
+{{--                <button type="button" id="back-btn" class="btn btn-default">Back</button>--}}
+{{--                <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>--}}
+{{--            </div>--}}
+{{--        </form>--}}
         <!-- END FORGOT PASSWORD FORM -->
         <!-- BEGIN REGISTRATION FORM -->
 
         <!-- END REGISTRATION FORM -->
     </div>
     {{--PASSWORD RESET MODEL--}}
-
-    <div class="modal fade" id="passwordResetModal" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>Reset Password</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input type="email" name="resetEmail" class="form-control resetEmail" placeholder="Please, Enter your email..." required>
-                        <br>
-                        <input type="submit" value="Submit" class="btn btn-primary" id="checkEmail">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{--END OF PASSWORD RESET MODEL--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -127,39 +109,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-{{--    <script>--}}
-{{--        var checkEmail = document.querySelector('#checkEmail');--}}
-{{--        var resetEmail = document.querySelector('.resetEmail');--}}
-{{--        checkEmail.addEventListener('click',function(e){--}}
-{{--            e.preventDefault();--}}
-{{--            var email = resetEmail.value;--}}
-{{--            if(email !== '') {--}}
-{{--                if(isValidEmailAddress(email)) {--}}
-{{--                    var csrf = "{{csrf_token()}}";--}}
-{{--                    $.ajax({--}}
-{{--                        url: "{{route('check.email')}}",--}}
-{{--                        type: 'POST',--}}
-{{--                        data: {email: email, _token: csrf},--}}
-{{--                        success: function (data) {--}}
-{{--                            console.log(data);--}}
-{{--                            if(data==='0'){--}}
-{{--                                $('#resetId').text("No email found");--}}
-{{--                                $('#passwordResetModal').modal('hide');--}}
-{{--                            }else{--}}
-{{--                                $('#resetId').text("Password reset link successfully sent to your email");--}}
-{{--                                $('#passwordResetModal').modal('hide');--}}
-{{--                            }--}}
-
-{{--                        },--}}
-{{--                    });--}}
-
-{{--                }--}}
-{{--            }--}}
-{{--            function isValidEmailAddress(emailAddress){--}}
-{{--                var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);--}}
-{{--                return pattern.test(emailAddress);--}}
-{{--            }--}}
-{{--        });--}}
-{{--    </script>--}}
+{{--
     {{--END OF SCRIPT CHECK EMAIL EXISTS IN DATABASE OR NOT FOR RESET--}}
 @endsection
