@@ -14,8 +14,10 @@ class FoodController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.food.index');
+        $food = Food::all();
+        return view('backend.pages.food.index',compact('food'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +37,26 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'picture'=>'required',
+        ]);
+
+
+        $imageName = time().'.'.request()->picture->getClientOriginalExtension();
+        request()->picture->move(public_path('images'), $imageName);
+
+        $input = $request->all();
+        $input['picture'] = $imageName;
+//        dd($input);
+
+
+        $food = Food::create($input);
+        if ($food) {
+            return redirect('food')->with('message','Food item is added');
+
+        }
+
     }
 
     /**
@@ -81,5 +102,28 @@ class FoodController extends Controller
     public function destroy(Food $food)
     {
         //
+    }
+
+    public function makeTodayFood(Request $request)
+    {
+        $food = Food::find($request->id);
+        if ($food->is_today_item) {
+            $food->is_today_item = false;
+            $food->save();
+            return 'remove';
+
+        }else{
+            $food->is_today_item = true;
+            $food->save();
+            return 'made';
+        }
+
+
+    }
+
+    public function todayFood()
+    {
+        $foods = Food::where('is_today_item',true)->get();
+        return view('backend.pages.food.today', compact('foods'));
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Notification;
 use Illuminate\Http\Request;
 
-class EmployeeRegisterController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class EmployeeRegisterController extends Controller
      */
     public function create()
     {
-        return view('Register.register');
+        //
     }
 
     /**
@@ -35,35 +35,16 @@ class EmployeeRegisterController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:users',
-            'password'=>'required',
-            'confirmed_password' => 'required|same:password',
-            'phone_number' => 'required|numeric|digits:10',
-            'address'=>'required'
-        ]);
-
-        $input = $request->all();
-        $input['is_employee']=1;
-        $input['password']=bcrypt($request->password);
-        $user = User::create($input);
-        if ($user) {
-            return redirect('/')->with('message2', 'User registered successfully');
-        } else {
-            return back()->with('/','sorry,Registration unsuccesfull');
-        }
-
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Notification $notification)
     {
         //
     }
@@ -71,10 +52,10 @@ class EmployeeRegisterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Notification $notification)
     {
         //
     }
@@ -83,10 +64,10 @@ class EmployeeRegisterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Notification $notification)
     {
         //
     }
@@ -94,10 +75,10 @@ class EmployeeRegisterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Notification $notification)
     {
         //
     }

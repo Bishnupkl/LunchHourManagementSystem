@@ -6,7 +6,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <div class="jumbotron">
-<form action="{{route('employee.store')}}" method="post"  enctype="multipart/form-data" class="portlet light">
+<form action="{{route('employee.register')}}" method="post"  enctype="multipart/form-data" class="portlet light">
 
     <!-- One "tab" for each step in the form: -->
     {{csrf_field()}}
@@ -54,10 +54,10 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label> Address</label>
-                <input type="text" placeholder="City..."  onkeyup="clearerror('cityError')" name="city" value="{{ old('city')}}" class="form-control">
-                @if ($errors->has('city'))
-                    <span class="help-block" id="cityError">
-                                <strong class="text-danger">{{ $errors->first('city') }}</strong>
+                <input type="text" placeholder="City..."  onkeyup="clearerror('cityError')" name="address" value="{{ old('address')}}" class="form-control">
+                @if ($errors->has('address'))
+                    <span class="help-block" id="addressError">
+                                <strong class="text-danger">{{ $errors->first('address') }}</strong>
                             </span>
                 @endif
             </div>
@@ -66,10 +66,10 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label> Phone Number</label>
-                <input type="text" placeholder="Company Phone Number..."  onkeyup="clearerror('contactError')" name="contact" value="{{ old('contact')}}" class="form-control">
-                @if ($errors->has('contact'))
-                    <span class="help-block" id="contactError">
-                                                <strong class="text-danger">{{ $errors->first('contact') }}</strong>
+                <input type="text" placeholder="Company Phone Number..."  onkeyup="clearerror('contactError')" name="phone_number" value="{{ old('contact')}}" class="form-control">
+                @if ($errors->has('phone_number'))
+                    <span class="help-block" id="phone_numberError">
+                                                <strong class="text-danger">{{ $errors->first('phone_number') }}</strong>
                                             </span>
                 @endif
             </div>

@@ -15,56 +15,46 @@
                 <span class="caption-subject font-green bold uppercase">food Items</span>
             </div>
         </div>
-        <div class="portlet-body">
-            <div class="table-scrollable">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th align="center"> I.D. </th>
-                        <th> Name </th>
-                        <th> Web </th>
-                        <th> City </th>
-                        <th> Street </th>
-                        <th> State</th>
-                        <th>Phone No</th>
-                        {{--<th>Gateways</th>--}}
-                        {{--<th>total Credits</th>--}}
-                        <th align="center" >View</th>
-                        {{--<th>Delete</th>--}}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{--                    @foreach($companies as $company)--}}
-                    <tr>
-                        <td> </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                        {{--                            <td> <a class = "btn btn-success" href="{{route('kitchen_staff.show',$company->id.'#companyDetails'   )}}"><i class="fa fa-eye"></i></a></td>--}}
-                        {{--<td>--}}
-                        {{--<button class="btn btn-default" value="{{$company->id}}" id="reFollowup" data-toggle="modal" data-target="#reFollowupModal" title="Re-followup"><i class="fa fa-bullhorn"></i></button>--}}
-                        {{--<button class="btn btn-danger" value="{{$company->id.'a'}}" id="deleteFollowup" data-toggle="modal" data-target="#deleteReFollowup" title="Delete-Followup"><i class="fa fa-trash"></i></button>--}}
-                        {{--<a href="" class="btn btn-default"><i class="fa fa-edit"></i> </a>--}}
-                        {{--<form data-id="{{$company->id}}" id="deleteCompany" >{{csrf_field()}}<button class="btn btn-outline btn-circle btn-sm red" ><i class="fa fa-trash"></i></button></form>--}}
-
-                        {{--</td>--}}
-                    </tr>
-                    </tbody>
-
-                </table>
-            </div>
+        <div class="grid-container">
+        @foreach($food as $f)
+                <div class="grid-item">
+                    <p>{{$f->name}}</p>
+                    <img src="/images/{{$f->picture}}" alt="" width="300" height="200"><br/>
+                    <button class="btn btn-primary makeToday"   data-foodid="{{$f->id}}"> {{$f->is_today_item?'Remove Today item':'Make Today item'}}</button>
+                </div>
+        @endforeach
         </div>
-    </div>
 @endsection
 @section('scripts')
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
+
+        $('.makeToday').click(function () {
+            let id = $(this).data('foodid');
+            let csrf="{{csrf_token()}}" ;
+            let that = $(this);
+            $.ajax(
+                {
+                    url:"{{route('food.make')}}",
+                    method:'post',
+                    data:{id:id, _token:csrf},
+                    success:function (data) {
+                            if(data=="remove"){
+                                that.text('Make today item');
+                                that.class('btn btn-primary makeToday')
+                            }else{
+                                that.text('Remove today item');
+                                that.class('btn btn-primary makeToday')
+
+                            }
+                    }
+
+                }
+            )
+
+        });
 
         $(document).on('click','#deleteCompany',function(event){
             event.preventDefault();

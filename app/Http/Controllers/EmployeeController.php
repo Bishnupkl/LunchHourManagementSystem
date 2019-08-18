@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -13,7 +15,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = User::where('is_employee', 1)->get();
+        return view('backend.pages.employee.index',compact('employees'));
     }
 
     /**
@@ -80,5 +83,25 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function employeeActivation($id)
+    {
+        $activationEmployee = User::find($id);
+
+        if ($activationEmployee->is_verified == '1') {
+           $activationEmployee->is_verified = '0';
+            $activationEmployee->update();
+            return "deactivated";
+
+        }
+        else{
+            $activationEmployee->is_verified = '1';
+            $activationEmployee->update();
+            return "activated";
+//            return true;
+        }
+
+
     }
 }

@@ -1,4 +1,17 @@
-body form input {
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+}
+.grid-item {
+
+    font-size: 30px;
+
+}
+
+
+  body form input {
     font-size: 1em !important;
     border-radius: 999em !important;
 }

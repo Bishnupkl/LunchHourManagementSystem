@@ -20,39 +20,34 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th align="center"> I.D. </th>
+                        <th align="center"> S.N </th>
                         <th> Name </th>
-                        <th> Web </th>
-                        <th> City </th>
-                        <th> Street </th>
-                        <th> State</th>
-                        <th>Phone No</th>
-                        {{--<th>Gateways</th>--}}
-                        {{--<th>total Credits</th>--}}
+                        <th> Address </th>
+                        <th> Phone No </th>
                         <th align="center" >View</th>
-                        {{--<th>Delete</th>--}}
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-{{--                    @foreach($companies as $company)--}}
+                    @foreach($kitchen_staff as $kitchen)
                         <tr>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$loop->index+1}}</td>
+                            <td>{{$kitchen->name }}</td>
+
+                            <td>{{$kitchen->address}}</td>
+                            <td>{{$kitchen->phone_number}}</td>
+                            <td>
+                                <a class = "btn btn-success" href="{{route('kitchen_staff.show',$kitchen->id.'#kitchenStaffDetails'   )}}"><i class="fa fa-eye"></i></a>
+
+                            </td>
+                            <td>
+                                <form data-id="{{$kitchen->id}}" id="deletekitchenStaff" >{{csrf_field()}}<button class="btn btn-outline btn-circle btn-sm red" ><i class="fa fa-trash"></i></button></form>
+
+                            </td>
                             <td></td>
 
-{{--                            <td> <a class = "btn btn-success" href="{{route('kitchen_staff.show',$company->id.'#companyDetails'   )}}"><i class="fa fa-eye"></i></a></td>--}}
-                            {{--<td>--}}
-                            {{--<button class="btn btn-default" value="{{$company->id}}" id="reFollowup" data-toggle="modal" data-target="#reFollowupModal" title="Re-followup"><i class="fa fa-bullhorn"></i></button>--}}
-                            {{--<button class="btn btn-danger" value="{{$company->id.'a'}}" id="deleteFollowup" data-toggle="modal" data-target="#deleteReFollowup" title="Delete-Followup"><i class="fa fa-trash"></i></button>--}}
-                            {{--<a href="" class="btn btn-default"><i class="fa fa-edit"></i> </a>--}}
-                            {{--<form data-id="{{$company->id}}" id="deleteCompany" >{{csrf_field()}}<button class="btn btn-outline btn-circle btn-sm red" ><i class="fa fa-trash"></i></button></form>--}}
-
-                            {{--</td>--}}
                         </tr>
+                        @endforeach
                     </tbody>
 
                 </table>
@@ -66,7 +61,7 @@
 
     <script>
 
-        $(document).on('click','#deleteCompany',function(event){
+        $(document).on('click','#deletekitchenStaff',function(event){
             event.preventDefault();
             var idToDelete = $(this).data('id');
             var csrf = '{{csrf_token()}}';
@@ -81,12 +76,12 @@
                     if (willDelete) {
                         $.ajax({
                             method:'DELETE',
-                            url:'company/'+idToDelete,
+                            url:'kitchen_staff/'+idToDelete,
                             data:{'_token':csrf},
                             success:function (data){
                                 console.log(data);
                                 if(data === 'true'){
-                                    {{--window.location.href = "{{route('company.index')}}";--}}
+                                    window.location.href = "{{route('kitchen_staff.index')}}";
                                 }
                             }
                         });

@@ -1,6 +1,6 @@
 @extends('backend.main')
 @section('main-content')
-    <form action="{{route('kitchen_staff.store')}}" method="post"  enctype="multipart/form-data" class="portlet light">
+    <form action="{{route('food.store')}}" method="post"  enctype="multipart/form-data" class="portlet light">
         <!-- One "tab" for each step in the form: -->
         {{csrf_field()}}
         @if(Session::has('message'))
@@ -23,7 +23,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Food name</label>
-                    <input type="text" placeholder="Full Name of Company..."   onkeyup="clearerror('nameError')" name="name" value="{{ old('name')}}" class="form-control">
+                    <input type="text" placeholder="Name of food Item"   onkeyup="clearerror('nameError')" name="name" value="{{ old('name')}}" class="form-control">
                     @if ($errors->has('name'))
                         <span class="help-block" id="nameError">
                                                 <strong class="text-danger">{{ $errors->first('name') }}</strong>
@@ -39,14 +39,29 @@
                         <option value="veg">Non veg</option>
                     </select>
 {{--                    <input type="email" placeholder="Company Email...."  onkeyup="clearerror('emailError')" name="email" value="{{ old('email')}}" class="form-control">--}}
-                    @if ($errors->has('email'))
-                        <span class="help-block" id="emailError">
-                                                <strong class="text-danger">{{ $errors->first('email') }}</strong>
+                    @if ($errors->has('category'))
+                        <span class="help-block" id="categoryError">
+                                                <strong class="text-danger">{{ $errors->first('category') }}</strong>
                                             </span>
                     @endif
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Picture</label>
+                    <input type="file" name="picture" class="form-control" accept=".jpg,.png,.gif,.jpeg">
+                    {{--                    <input type="email" placeholder="Company Email...."  onkeyup="clearerror('emailError')" name="email" value="{{ old('email')}}" class="form-control">--}}
+                    @if ($errors->has('category'))
+                        <span class="help-block" id="categoryError">
+                                                <strong class="text-danger">{{ $errors->first('category') }}</strong>
+                                            </span>
+                    @endif
+                </div>
+            </div>
+        </div>
+
 
         <div style="overflow:auto;">
             <div style="float:right;">

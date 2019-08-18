@@ -164,3 +164,29 @@
 
 
 {{----}}
+<script>
+    $(document).ready(function () {
+        $('#savePassword').click(function () {
+          let currentPassword = $('#currentPassword').val();
+          let newPassword = $('#newPassword').val();
+            let csrf = "{{csrf_token()}}";
+          $.ajax({
+              url:"{{route('pssword.reset')}}",
+              method:'post',
+              data:{currentPassword,newPassword,_token:csrf},
+              success: function (data) {
+                  if(data=='not matched'){
+                      $('#passwordError').text('Your current password do not matched').addClass('alert alert-danger');
+                  }else{
+                      $('#resetpasswordModal .close').click();
+                      $('#passwordResetSuccess').text('Your password changed successfully');
+
+                  }
+              }
+
+          })
+
+        });
+
+    });
+</script>

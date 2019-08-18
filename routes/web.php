@@ -16,10 +16,11 @@ Route::get('/login', 'LoginController@loginpage')->name('login');
 Route::get('/dashboard','LoginController@dashboardpage')->name('dashboard')->middleware('auth');
 Route::post('login-check', 'LoginController@loginCheck')->name('login.check');
 Route::get('/logout','LoginController@logout')->name('logout');
+Route::post('/password-reset', 'LoginController@passwordReset')->name('pssword.reset');
 
 
 Route::get('register','EmployeeRegisterController@create')->name('register.page');
-Route::post('company/register','EmployeeRegisterController@store')->name('employee.register');
+Route::post('employee-store','EmployeeRegisterController@store')->name('employee.register');
 
 Route::group([
   'middleware' => 'auth',
@@ -27,8 +28,21 @@ Route::group([
     function ()
     {
         Route::resource('employee', 'EmployeeController');
+
+        Route::get('employee/activation/{id}','EmployeeController@employeeActivation')->name('employee.activation');
+
+
         Route::resource('kitchen_staff', 'KitchenStaffController');
         Route::resource('food', 'FoodController');
+        Route::post('food-make','FoodController@makeTodayFood')->name('food.make');
+        Route::get('food-today','FoodController@todayFood')->name('food.today');
+        Route::post('make-order', 'OrderController@store')->name('make.order');
+
+        Route::get('advance-order', 'OrderController@create')->name('advance.order');
+        Route::post('advance-order', 'OrderController@storeAdvanceOrder')->name('order.store');
+        Route::get('manage-order', 'KitchenStaffController@manageOrder')->name('manage.order');
+        Route::post('complete-order', 'KitchenStaffController@completeOrder')->name('order.complete');
+
     }
 );
 

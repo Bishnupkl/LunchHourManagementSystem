@@ -16,38 +16,44 @@
         <!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
+            <span  id="passwordResetSuccess" style="color: #ABE7ED;margin-left: 10px;font-size: 16px"></span>
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    @if(auth()->user()->is_employee)
+                    <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <font color="black"><i class="icon-bell"></i></font>
+                            <span class="badge badge-default"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="external">
+                                <h3>
+                                    <span class="bold">notifications</span> </h3>
 
-                    {{--<li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">--}}
-                        {{--<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">--}}
-                            {{--<font color="black"><i class="icon-bell"></i></font>--}}
-                            {{--<span class="badge badge-default"></span>--}}
-                        {{--</a>--}}
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<li class="external">--}}
-                                {{--<h3>--}}
-                                    {{--<span class="bold">12 pending</span> notifications</h3>--}}
-                                {{--<a href="page_user_profile_1.html">view all</a>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">--}}
-                                    {{--<li>--}}
-                                        {{--<a href="javascript:;">--}}
-                                            {{--<span class="time">just now</span>--}}
-                                            {{--<span class="details">--}}
-                                                        {{--<span class="label label-sm label-icon label-success">--}}
-                                                            {{--<i class="fa fa-plus"></i>--}}
-                                                        {{--</span> New user registered. </span>--}}
-                                        {{--</a>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</li>--}}
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                    <li>
+                                        @foreach($orders as $order)
+                                        <a href="javascript:;">
+                                            <span class="time">{{$order->updated_at->diffForHumans()}}</span>
+                                            <span class="details">
+
+                                                        </span> Your order {{$order->food_name}} has been completed </span>
+
+
+                                        </a>
+                                            @endforeach
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                    @endif
 
                     <!-- END NOTIFICATION DROPDOWN -->
                     <!-- BEGIN INBOX DROPDOWN -->
@@ -66,7 +72,10 @@
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
-
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i>  <p>{{auth()->user()->name}}</p> </a>
+                            </li>
                             <li>
                                 <a href="{{route('logout')}}">
                                     <i class="icon-user"></i> Log Out </a>
@@ -101,38 +110,27 @@
       <div class="modal-body">
 <div class="row" id="checkrow">
     <div style="margin-left:10px;margin-right:10px;">
-        <div class="form-group" id="emailDiv">
-        <label for="emailcheck">EMAIL</label>
-        <input type="text" class="form-control" id="emailcheck" placeholder="PLEASE TYPE YOUR EMAIL">
+        <div class="form-group" >
+        <label for="emailcheck">Current Password</label>
+        <input type="text" class="form-control" id="currentPassword" placeholder="PLEASE TYPE YOUR CURRENT PASSWORD">
     </div>
-         <div class="form-group" id="passwordDiv" style="display:none;">
-        <label for="emailcheck">Password</label>
-        <input type="password" class="form-control" id="passwordcheck" placeholder="PLEASE TYPE YOUR CURRENT PASSWORD">
+        <div class="form-group" >
+            <label for="emailcheck">New Password</label>
+            <input type="text" class="form-control" id="newPassword" placeholder="PLEASE TYPE YOUR CURRENT PASSWORD">
+          <p id="passwordError"></p>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary " id="savePassword">Save Chandges</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
     </div>
     </div>
 </div>
-<div class="row" id="updaterow" style="display:none;">
-    <div style="margin-left:10px;margin-right:10px;">
-        <div class="form-group" id="newpasswordDiv">
-        <label for="emailcheck">New Password</label>
-        <input type="password" class="form-control" onkeydown="clearserror('passworderror')" id="newpassword" placeholder="PLEASE TYPE NEW PASSWORD">
-        <span id="passworderror" class="text-danger error"></span>
-    </div>
-         <div class="form-group" id="passwordconfirmDiv">
-        <label for="passwordconfirm">Password</label>
-        <input type="password" class="form-control" id="passwordconfirm" onkeydown="clearserror('passwordconfirmerror')" placeholder="PLEASE CONFIRM YOUR NEW PASSWORD">
-          <span id="passwordconfirmerror" class="text-danger error"></span>
-    </div>
-    </div>
-    </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="confirmbutton" style="display:none;">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
 
 

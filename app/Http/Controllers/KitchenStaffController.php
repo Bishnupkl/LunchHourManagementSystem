@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\KitchenStaff;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class KitchenStaffController extends Controller
 {
@@ -15,7 +17,8 @@ class KitchenStaffController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.kitchen-staff.index');
+        $kitchen_staff = User::where(['is_kitchen_staff'=> 1])->get();
+        return view('backend.pages.kitchen-staff.index',compact('kitchen_staff'));
     }
 
     /**
@@ -47,12 +50,13 @@ class KitchenStaffController extends Controller
 
         $input = $request->all();
         $input['is_kitchen_staff']=1;
+        $input['is_verified']=1;
         $input['password']=bcrypt($request->password);
         $user = User::create($input);
         if ($user) {
-            return view('backend.pages.kitchen-staff.index');
+            return redirect('kitchen_staff')->with('message', 'new staff details has beeen created');
         } else {
-            return back();
+            return back()->with('message','sorry,new staff details could not be created');
         }
 
     }
@@ -63,9 +67,10 @@ class KitchenStaffController extends Controller
      * @param  \App\KitchenStaff  $kitchenStaff
      * @return \Illuminate\Http\Response
      */
-    public function show(KitchenStaff $kitchenStaff)
+    public function show($kitchenStaff)
     {
-        //
+        $staff_details = User::where('is_kitchen_staff', 1)->orWhere('id', $kitchenStaff)->get()->first();
+        return view('backend.pages.kitchen-staff.details',compact('staff_details'));
     }
 
     /**
@@ -86,9 +91,13 @@ class KitchenStaffController extends Controller
      * @param  \App\KitchenStaff  $kitchenStaff
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KitchenStaff $kitchenStaff)
+    public function update(Request $request,$kitchenStaff)
     {
-        //
+        $kitchenStaff = User::find($kitchenStaff)->update([$request]);
+        if ($kitchenStaff) {
+            return redirect('kitchen_staff')->with('message', 'Kitchen Staff Details has been upadted');
+        }
+
     }
 
     /**
@@ -97,8 +106,31 @@ class KitchenStaffController extends Controller
      * @param  \App\KitchenStaff  $kitchenStaff
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KitchenStaff $kitchenStaff)
+    public function destroy($kitchenStaff)
     {
-        //
+        $kitchenStaff = User::find($kitchenStaff)->delete();
+        if ($kitchenStaff) {
+            Session::flash('message','staff details deleted successfully');
+            return 'true';
+        }
+
+    }
+
+    public function manageOrder()
+    {
+        $orders = Order::all();
+        return view('backend.pages.kitchen-staff.manage-order',compact('orders'));
+
+    }
+
+    public function completeOrder(Request $request)
+    {
+        $order = Order::find($request->id);
+        if (!$order->is_completed) {
+            $order->is_completed = true;
+            $order->save();
+            return 'completed';
+
+        }
     }
 }

@@ -2,21 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="222903ca-a048-4f36-aa98-7b5b8818a5a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/food/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/food/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/employee/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/kitchen-staff/details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Food.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Food.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeRegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FoodController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FoodController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KitchenStaffController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KitchenStaffController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Role.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_08_14_043938_create_roles_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/AdminTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AdminTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RoleTableSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_16_044534_create_food_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_16_044534_create_food_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/myStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/myStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Register/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Register/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/includes/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/includes/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/backend/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/includes/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/kitchen-staff/add-kitchen-staff.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/kitchen-staff/add-kitchen-staff.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/includes/topnav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/includes/topnav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/food/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/food/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/food/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/food/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/kitchen-staff/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/kitchen-staff/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login/loginmain.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/loginmain.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,11 +126,14 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1PSCuvZzOK8zer58uR07whkp5IR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sms_portal" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -163,7 +172,9 @@
       <workItem from="1565927545220" duration="1723000" />
       <workItem from="1565929875086" duration="9277000" />
       <workItem from="1565950891032" duration="5077000" />
-      <workItem from="1565961635448" duration="9424000" />
+      <workItem from="1565961635448" duration="32909000" />
+      <workItem from="1566057464003" duration="10442000" />
+      <workItem from="1566069603574" duration="8021000" />
     </task>
     <servers />
   </component>
