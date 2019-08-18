@@ -19,23 +19,21 @@ This project is based on managing Lunch Hour system of any company.
 
 4. `php artisan migrate`
 
-5. `php artisan db:seed`
-
-6. `php artisan serve`
+5. ``php artisan serve`
 
     Open the browser and go to `http://localhost:8000`
 
-7. `php artisan route:clear`
+6.  php artisan route:clear`
 
     You may use the route:clear command to clear the route cache
 
-8. `php artisan route:cache`
+7. `php artisan route:cache`
 
     Using the route cache will drastically decrease the amount of time it takes to register all of your application's routes. 
 
 ### Login Information
 
-Email : connect@klientescape.com
+Email : connect@klientscape.com
 
 Password : `secret`
 
