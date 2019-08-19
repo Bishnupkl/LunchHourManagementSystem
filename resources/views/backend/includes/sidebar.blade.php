@@ -29,14 +29,14 @@
                         <span class="{{Request::is('gateway') || Request::is('gateway/*') ? 'arrow open' : ''}}"></span>
                     </a>
                 </li>
-{{--                <li class="nav-item {{Request::path() == 'money-rate' ? 'active' : ''}}">--}}
-{{--                    <a href="{{route('money-rate.index')}}" class="nav-link nav-toggle">--}}
-{{--                        <i class="icon-credit-card"></i>--}}
-{{--                        <span class="title">Manage Credit Rate</span>--}}
-{{--                        <span class="{{Request::path() == 'money-rate' ? 'selected' : ''}}"></span>--}}
-{{--                        <span class="{{Request::path() == 'money-rate' ? 'arrow open' : ''}}"></span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                <li class="nav-item {{Request::path() == 'menu-report' ? 'active' : ''}}">
+                    <a href="{{route('menu.report')}}" class="nav-link nav-toggle">
+                        <i class="icon-credit-card"></i>
+                        <span class="title">Menu Report</span>
+                        <span class="{{Request::path() == 'menu-report' ? 'selected' : ''}}"></span>
+                        <span class="{{Request::path() == 'menu-report' ? 'arrow open' : ''}}"></span>
+                    </a>
+                </li>
             @elseif(auth()->user()->is_kitchen_staff)
                 <li class="nav-item {{Request::is('user') || Request::is('user/*') ? 'active' : ''}}">
                     <a href="{{route('food.index')}}" class="nav-link nav-toggle">

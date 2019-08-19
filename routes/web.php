@@ -43,7 +43,14 @@ Route::group([
         Route::get('manage-order', 'KitchenStaffController@manageOrder')->name('manage.order');
         Route::post('complete-order', 'KitchenStaffController@completeOrder')->name('order.complete');
 
+        Route::get('menu-report', 'KitchenStaffController@menuReport')->name('menu.report');
+
+
+
     }
 );
+
+Route::post('check-email','LoginController@checkEmail')->name('check.email');
+
 
 

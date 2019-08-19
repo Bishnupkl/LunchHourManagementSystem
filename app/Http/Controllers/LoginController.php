@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Food;
+use App\Mail\PasswordResetMail;
 use App\Models\Company;
 use App\Models\Credit;
 use App\Models\Gateway;
@@ -15,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use mysql_xdevapi\Session;
 
 class LoginController extends Controller
@@ -75,39 +77,24 @@ class LoginController extends Controller
 
 
 
-//            $company_id = Auth::user()->company_id;
-//
-//            $companyGateways = \App\Models\CompanyGateway::where('company_id', auth()->user()->company_id)->get();
-//            foreach ($companyGateways as $companyGateway) {
-//                $gatewayIds[] = $companyGateway->gateway_id;
-//            }
-//            foreach ($gatewayIds as $gatewayId) {
-//                foreach (\App\Models\Gateway::where('id', $gatewayId)->get() as $type) {
-//                    $gatewayType[] = $type->type;
-//
-//                }
-//            }
-//            if (in_array('ncell', $gatewayType)) {
-//                $ncellCredits = Credit::where('company_id',$company_id)->get()->first()->ncell;
-//            }
-//            if (in_array('ntc', $gatewayType)) {
-//                $ntcCredits = Credit::where('company_id',$company_id)->get()->first()->ntc;
-//            }
-//            if (in_array('smart', $gatewayType)) {
-//                $smartCredits = Credit::where('company_id',$company_id)->get()->first()->smart;
-//            }
-//
-//            $groups = count(Group::where('company_id',$company_id)->get());
-//            $smsReports = count(SmsReport::where('company_id',$company_id)->get());
-//
-//            $apiToken = \auth()->user()->access_token;
-//            return view('backend.dashboard.index',compact('ncellCredits','ntcCredits','smartCredits','groups','smsReports','apiToken'));
-//        }
-//        else{
-//            $companies = count(Company::all());
-//            $gateways = count(Gateway::all());
-//            return view('backend.dashboard.index',compact('companies','gateways'));
-//        }
+        public function checkEmail(Request $request){
+        $email = $request->email;
+        $checkEmail = \App\Models\User::where('email',$email)->first();
+        if($checkEmail){
+            $resetToken = str_random(40);
+            $checkEmail->password_reset_token = $resetToken;
+            $checkEmail->save();
+            Mail::to($email)->send(new PasswordResetMail($checkEmail));
+            return response()->json('1');
+        }
+        else{
+            return response()->json('0');
+
+        }
+
+    }
+
+
 
 
 

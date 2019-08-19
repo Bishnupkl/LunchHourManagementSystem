@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Food;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -123,6 +124,8 @@ class FoodController extends Controller
 
     public function todayFood()
     {
+//        $date = Carbon::now();
+//        dd($date);
         $foods = Food::where('is_today_item',true)->get();
         return view('backend.pages.food.today', compact('foods'));
     }

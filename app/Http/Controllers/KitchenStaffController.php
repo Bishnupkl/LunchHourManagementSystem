@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Food;
 use App\KitchenStaff;
 use App\Order;
 use App\User;
@@ -132,5 +133,14 @@ class KitchenStaffController extends Controller
             return 'completed';
 
         }
+    }
+
+    public function menuReport()
+    {
+        $reports = Food::where('is_today_item', true)->orderBy('created_at', 'DESC')->paginate(10);
+
+        return view('backend.pages.report.menu-report', compact('reports'));
+
+
     }
 }
