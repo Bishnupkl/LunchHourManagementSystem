@@ -64,7 +64,7 @@ class LoginController extends Controller
             return view('backend.dashboard.index', compact('employee', 'kitchen_staff', 'verified_employee'));
         } elseif (Auth::user()->is_employee) {
             $foods = Food::where('is_today_item', true)->get();
-            $orders = Order::where(['is_completed'=>true,'user_id'=>auth()->user()->id])->get();
+            $orders = Order::where(['is_completed'=>true,'user_id'=>auth()->user()->id])->orderBy('updated_at','DESC')->get();
             return view('backend.dashboard.index', compact('foods','orders'));
         }
         else{
