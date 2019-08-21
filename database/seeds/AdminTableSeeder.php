@@ -13,7 +13,7 @@ class AdminTableSeeder extends Seeder
     {
         \Illuminate\Support\Facades\DB::table('users')->insert([
             'name'=>'KlientEscape',
-            'email'=>'connect@klientescape.com',
+            'email'=>'connect@klientscape.com',
             'password'=>bcrypt('secret'),
             'phone_number'=>'9811990067',
             'address'=>'kathmandu',
