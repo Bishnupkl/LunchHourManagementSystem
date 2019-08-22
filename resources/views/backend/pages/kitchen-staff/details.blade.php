@@ -25,7 +25,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" placeholder="Full Name of Company..."   onkeyup="clearerror('nameError')" name="name" value="{{(! empty($staff_details->name)) ? $staff_details->name : old('name')}}" class="form-control">
+                    <input type="text" placeholder="Full Name of kichen staff"   onkeyup="clearerror('nameError')" name="name" value="{{(! empty($staff_details->name)) ? $staff_details->name : old('name')}}" class="form-control">
                     @if ($errors->has('name'))
                         <span class="help-block" id="nameError">
                                                 <strong class="text-danger">{{ $errors->first('name') }}</strong>
