@@ -94,7 +94,7 @@ class KitchenStaffController extends Controller
      */
     public function update(Request $request,$kitchenStaff)
     {
-        dd($request);
+       
         $kitchenStaff = User::find($kitchenStaff)->update([$request]);
         if ($kitchenStaff) {
             return redirect('kitchen_staff')->with('message', 'Kitchen Staff Details has been upadted');
