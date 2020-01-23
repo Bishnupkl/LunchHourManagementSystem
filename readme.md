@@ -33,7 +33,7 @@ This project is based on managing Lunch Hour system of any company.
 
 ### Login Information
 
-Email : connect@klientscape.com
+Email : connect@lhms.com
 
 Password : `secret`
 
