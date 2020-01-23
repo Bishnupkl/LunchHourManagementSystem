@@ -12,8 +12,8 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
         \Illuminate\Support\Facades\DB::table('users')->insert([
-            'name'=>'KlientEscape',
-            'email'=>'connect@klientscape.com',
+            'name'=>'LHMS',
+            'email'=>'connect@lhms.com',
             'password'=>bcrypt('secret'),
             'phone_number'=>'9811990067',
             'address'=>'kathmandu',
