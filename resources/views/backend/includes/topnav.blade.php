@@ -1,11 +1,15 @@
 
-<div class="page-header navbar navbar-fixed-top">
+<div style="padding: -30px" class="page-header navbar navbar-fixed-top" >
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="http://klientscape.com">
-                <img src="{{asset('images/logo.png')}}" alt="logo" class="logo-default" style="width: 150px; margin-top: -10px">
+                <img src="{{asset('images/logo.png')}}" alt="logo" class="logo-default" style="width: 79px;
+    margin-left: 37px;
+    margin-top: -6px;
+    padding: 10px;
+">
             </a>
         </div>
         <!-- END LOGO -->

@@ -1,5 +1,5 @@
 <div class="page-footer">
-    <div class="page-footer-inner"> {{date('Y')}} &copy; KlientScape
+    <div class="page-footer-inner"> {{date('Y')}} &copy;
         <a href="https://technorio.com/" title="SMS Portal" target="_blank">LHMS</a>
     </div>
     <div class="scroll-to-top">
