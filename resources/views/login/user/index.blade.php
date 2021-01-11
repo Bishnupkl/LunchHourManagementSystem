@@ -3,7 +3,7 @@
 
 @section('main-content')
     <div class="logo">
-        <a href="http://klientscape.com">
+        <a href="https://github.com/Bishnupkl">
             <img src="{{asset('images/logo.png')}}" alt="logo" width="100px" height="100px">
         </a>
     </div>

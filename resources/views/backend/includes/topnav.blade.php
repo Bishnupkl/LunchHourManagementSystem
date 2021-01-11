@@ -4,7 +4,7 @@
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="http://klientscape.com">
+            <a href="https://github.com/Bishnupkl">
                 <img src="{{asset('images/logo.png')}}" alt="logo" class="logo-default" style="width: 79px;
     margin-left: 37px;
     margin-top: -6px;
